@@ -1,0 +1,59 @@
+<project name="Test Project" basedir="." default="build">
+	<property name="web.webcontent" value="WebContent" />
+	<property name="web.dir" value="${web.webcontent}/WEB-INF" />
+	<property name="build.dir" value="${web.dir}/classes" />
+	<property name="classes.dir" value="classes" />
+	<property name="src.dir" value="src" />
+	<property name="project.name" value="eMumba.war" />
+	<property environment="env" />
+	<property name="jboss_home" value="${env.JBOSS_HOME}" />
+	<path id="master-classpath">
+		<fileset dir="${web.dir}/lib" />
+		<fileset dir="${jboss_home}/client" includes="*.jar" />
+		<fileset dir="${jboss_home}/common/lib" includes="*.jar" />
+	</path>
+
+	<target name="build" depends="compile">
+		<war destfile="${project.name}" webxml="${web.dir}/web.xml">
+			<fileset dir="${web.webcontent}">
+				<include name="**/*.*" />
+			</fileset>
+			<classes dir="${classes.dir}"/>
+		</war>
+		<delete dir="${classes.dir}" />
+		<copy file="${project.name}" todir="${jboss_home}/server/default/deploy"/>
+		<delete file="${project.name}" />
+		<echo> The project ${project.name} is successfully copied to ${jboss_home}.
+		</echo>
+	</target>
+	<target name="compile" depends="init" description="Compile source java files">
+		<javac destdir="${classes.dir}" srcdir="${src.dir}" debug="on" source="1.6">
+			<!-- src path="${src.dir}"/ -->
+			<classpath refid="master-classpath" />
+		</javac>
+		<copy todir="${classes.dir}">
+		    <fileset dir="${src.dir}" includes="**/*.xml,**/*.sql,**/*.properties" />
+		</copy>
+	</target>
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+	</target>
+	<!-- Start Jboss -->
+	<target name="start-jboss" description="Starts back-end EJB container">
+		<exec executable="${jboss_home}/bin/run.bat" spawn="false" />
+		<echo>+-----------------------------+</echo>
+		<echo>| J B O S S S T A R T E D     |</echo>
+		<echo>+-----------------------------+</echo>
+	</target>
+
+	<!-- Stop Jboss -->
+	<target name="stop-jboss" description="Stops back-end EJB container">
+		<exec executable="${jboss_home}/bin/shutdown.bat" spawn="false">
+			<arg line="-S" />
+		</exec>
+		<echo>+-----------------------------+</echo>
+		<echo>| J B O S S S T O P P E D     |</echo>
+		<echo>+-----------------------------+</echo>
+
+	</target>
+</project>

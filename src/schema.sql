@@ -1,0 +1,11 @@
+--create database testfinal3;
+CREATE TABLE test.USERS (
+  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  NAME VARCHAR (100) NOT NULL,
+  EMAIL VARCHAR (100) NOT NULL,
+  PASSWORD VARCHAR (100) NOT NULL,
+  AUTHORITY VARCHAR (100) NOT NULL,
+  UNIQUE (EMAIL)
+);
+insert into test.USERS values (1,'admin','admin@emumba.com','21232f297a57a5a743894a0e4a801fc3','ROLE_ADMIN');
+commit;

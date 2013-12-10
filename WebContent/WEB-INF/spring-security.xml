@@ -1,0 +1,28 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<http use-expressions="true">
+		<intercept-url pattern="/home*" access="hasAnyRole('ROLE_NORMAL','ROLE_ADMIN')" />
+		<intercept-url pattern="/secured/alluser*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/secured/update/*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/secured/create*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/secured/deleteUser/*" access="hasRole('ROLE_ADMIN')" />
+		<form-login login-page="/login" default-target-url="/home"
+			authentication-failure-url="/fail2login" />
+		<logout logout-success-url="/logout" />
+		<!-- <access-denied-handler error-page="/403.jsp"/> -->		
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="md5" />
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select EMAIL,PASSWORD, 'true' as ENABLED from USERS where EMAIL=?"
+				authorities-by-username-query="select EMAIL, AUTHORITY from USERS where EMAIL =?" />
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans> 
