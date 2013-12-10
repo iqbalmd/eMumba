@@ -69,7 +69,7 @@ create database test
 * Browse to Jboss >> bin directory.<br>
 * Type the “run.bat” and wait for Jboss to start.<br>
 * Now open internet explorer and type the following<br>
-* [http://localhost:8080/eMumaba/] (http://localhost:8080/eMumaba/)
+* [http://localhost:8080/eMumba/] (http://localhost:8080/eMumba/)
 * The user email and password are the following
 
 ```
