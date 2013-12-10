@@ -33,4 +33,24 @@ For example:
 ```COMMAND
 cmd >> C:\jasypt-1.9.1\bin
 ```
+Create two encrypted password for MySQL  root username and password type the following
+
+        encrypt.bat input="This is my message to be encrypted" password=STRONG_PASSWORD
+**Note:** Remember value of STRONG_PASSWORD from environment variable.
+For example I want to encrypt “root” & “admin”
+
+    encrypt.bat input="root" password=”eMumba”
+    encrypt.bat input="admin" password=”eMumba”
+Copy both of the encrypted value and update **database.properties** file under the following location:
+    
+    eMumba\WebContent\WEB-INF\database.properties
+Replace the asterisk with encrypted value respectively.
+    
+    jdbc.driverClassName=com.mysql.jdbc.Driver
+    jdbc.url=jdbc:mysql://localhost:3306/test
+    jdbc.username=ENC(*************)
+    jdbc.password=ENC(*************)
+
+    
+
 
