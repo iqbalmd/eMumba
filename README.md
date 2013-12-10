@@ -24,3 +24,13 @@ Append the bin directory of the ANT to the “Path” environment variable.
 
     Path= ;C:\apache-ant-1.9.2\bin
 
+## C) Creating encrypted password using “Jasypt” for MySQL username and password
+
+Online Help for [Jasypt] (http://www.jasypt.org/cli.html)
+
+Open the command prompt and browse to the “Jasypt”  directory.
+For example:
+```COMMAND
+cmd >> C:\jasypt-1.9.1\bin
+```
+
