@@ -5,19 +5,19 @@
 ## A) Installing and extracting
 Perform the following steps
 
-* Extract **"jboss-5.0.0.GA.zip"** to some drive.<br>
-* Extract **“jasypt-1.9.1-dist.zip”** to some drive;<br>
-* Extract **“apache-ant-1.9.2-bin.zip”** to some drive;<br>
+* Download and extract [**"jboss-5.0.0.GA.zip"**] (https://github.com/iqbalmd/eMumba/releases/download/1.0/jboss-5.0.0.GA.zip) to some drive.<br>
+* Download and extract [**“jasypt-1.9.1-dist.zip”**] (https://github.com/iqbalmd/eMumba/releases/download/1.0/jasypt-1.9.1-dist.zip) to some drive;<br>
+* Download and extract [**“apache-ant-1.9.2-bin.zip”**] (https://github.com/iqbalmd/eMumba/releases/download/1.0/apache-ant-1.9.2-bin.zip) to some drive;<br>
 * Download [MySQL 5.x] (http://dev.mysql.com/downloads/mysql/) version and install.<br>
 * Copy the source project code “eMumba” to some drive.<br>
 
 ## B)	Making environment variable
 * Make the following env variable  i;e  variable name = variable value <br>
-```
-JBOSS_HOME = D:\jboss-5.0.0.GA
-ANT_HOME= C:\apache-ant-1.9.2
-STRONG_PASSWORD = eMumba
-```
+
+        JBOSS_HOME = D:\jboss-5.0.0.GA
+        ANT_HOME= C:\apache-ant-1.9.2
+        STRONG_PASSWORD = eMumba
+
 * Append the bin directory of the ANT to the “Path” environment variable.<br>
 ```
 Path= ;C:\apache-ant-1.9.2\bin
@@ -36,10 +36,10 @@ encrypt.bat input="This is my message to be encrypted" password=STRONG_PASSWORD
 ```
 * **Note:** Remember value of STRONG_PASSWORD from environment variable.
 * For example I want to encrypt “root” & “admin”<br>
-```
-encrypt.bat input="root" password=”eMumba”
-encrypt.bat input="admin" password=”eMumba”
-```
+
+        encrypt.bat input="root" password=”eMumba”
+        encrypt.bat input="admin" password=”eMumba”
+
 * Copy both of the encrypted value and update **database.properties** file under the following location:<br>
 ```
 eMumba\WebContent\WEB-INF\database.properties
@@ -76,12 +76,3 @@ create database test
 EMAIL = admin@emumba.com
 Password=admin
 ```
-
-
-
-
-
-
-    
-
-
