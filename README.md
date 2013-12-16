@@ -1,4 +1,4 @@
-#Steps to run the eMumba Assignment
+#Steps to run the eMumba project
 > by Muhammad Iqbal <br/>
 > -- md.iqbalit@gmail.com
 
