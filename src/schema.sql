@@ -1,4 +1,4 @@
---create database testfinal3;
+--create database 
 CREATE TABLE test.USERS (
   ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NAME VARCHAR (100) NOT NULL,
